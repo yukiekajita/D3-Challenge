@@ -26,7 +26,7 @@ var chartGroup = svg.append("g")
 
 // Initial Params
 var chosenXAxis = "poverty";
-var chosenYAxis = "heathcare";
+var chosenYAxis = "healthcare";
 
 // function used for updating x-scale var upon click on axis label
 function xScale(censusData, chosenXAxis) {
@@ -206,14 +206,16 @@ d3.csv("assets/data/data.csv").then(function(censusData, err) {
 
   // append initial circles
   var circlesGroup = chartGroup.selectAll("circle")
-    .data(censusData)
-    .enter()
-    .append("circle")
-    .attr("cx", d => xLinearScale(d[chosenXAxis]))
-    .attr("cy", d => yLinearScale(d[chosenYAxis]))
-    .attr("r", 20)
-    .attr("fill", "lightblue")
-    .classed("stateCircle", true)
+  .data(censusData)
+  .enter()
+  .append("circle")
+  .attr("cx", d => xLinearScale(d[chosenXAxis]))
+  .attr("cy", d => yLinearScale(d[chosenYAxis]))
+  .attr("r", 20)
+  .attr("fill", "lightblue")
+  .classed("stateCircle", true)
+  
+  console.log(circlesGroup);
 
   var circlesText = circlesGroup.append("text")
     .text(d => d.abbr)
@@ -297,6 +299,7 @@ d3.csv("assets/data/data.csv").then(function(censusData, err) {
 
         // updates circles with new x values
         circlesGroup = renderXCircles(circlesGroup, xLinearScale, chosenXAxis);
+
         circlesText = renderXText(circlesText, xLinearScale, chosenXAxis);
         
         // updates tooltips with new info
@@ -346,10 +349,10 @@ ylabelsGroup.selectAll("text")
     var value = d3.select(this).attr("value");
     if (value !== chosenYAxis) {
 
-    // replaces chosenXAxis with value
+    // replaces chosenYAxis with value
     chosenYAxis = value;
 
-    //console.log(chosenXAxis)
+    //console.log(chosenYAxis)
 
     // functions here found above csv import
     // updates y scale for new data
@@ -360,9 +363,13 @@ ylabelsGroup.selectAll("text")
 
     // updates circles with new x values
     circlesGroup = renderYCircles(circlesGroup, yLinearScale, chosenYAxis);
+
+    // console.log(("test: ",circlesGroup, yLinearScale,chosenYAxis));
     circlesText = renderYText(circlesGroup, yLinearScale, chosenYAxis);
     // updates tooltips with new info
     circlesGroup = updateToolTip(circlesGroup, chosenXAxis, chosenYAxis);
+
+    console.log('test: ',circlesGroup);
 
     // changes classes to change bold text
     if (chosenYAxis === "healthcare") {
