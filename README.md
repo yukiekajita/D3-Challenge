@@ -3,6 +3,8 @@
 * Using the D3 techniques, I created a scatter plot that represented each state with circle elements. I imported 2014 Census data, `data.csv` by using the `d3.csv` function. I included state abbreviations in the circles with "selectAll.("null")" function, and appended text to the circles. I used the rate of poverty, median income, and median age as x variables, and the rate of lacks healthcare, obesity, and smoking rate as y variables.
 
 ** Opening website page
+
+
 ![Website_Image](Readme_Images/Website_Image.png)
 
 
@@ -12,6 +14,8 @@
 
 
 ** Animated website page with gif
+
+
 ![Webscreen_gif](Readme_Images/Webscreen.gif)
 
 
