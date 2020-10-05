@@ -96,7 +96,7 @@ function renderXText(circlesGroup, newXScale, chosenXAxis) {
 function renderYText(circlesGroup, newYScale, chosenYAxis) {
     circlesGroup.transition()
         .duration(1000)
-        .attr("dy", d => newYScale(d[chosenYAxis]));
+        .attr("dy", d => newYScale(d[chosenYAxis])+5);
     return circlesGroup;
 }
 
@@ -155,7 +155,7 @@ function updateToolTip(circlesGroup, chosenXAxis, chosenYAxis) {
 
 // Retrieve data from the CSV file and execute everything below
 d3.csv("assets/data/data.csv").then(function(censusData, err) {
-  if (err) throw err;
+  //if (err) throw err;
   // console.log(censusData);
   // parse data
   censusData.forEach(function(data) {
@@ -165,7 +165,8 @@ d3.csv("assets/data/data.csv").then(function(censusData, err) {
     data.smokes= +data.smokes;
     data.healthcare = +data.healthcare;
     data.obesity = +data.obesity;
-    // console.log(data.poverty);
+    data.abbr = data.abbr;
+    console.log(data.abbr);
   });
 
   // xLinearScale function above csv import
@@ -197,10 +198,8 @@ d3.csv("assets/data/data.csv").then(function(censusData, err) {
   .attr("cx", d => xLinearScale(d[chosenXAxis]))
   .attr("cy", d => yLinearScale(d[chosenYAxis]))
   .attr("r", 13)
-  .attr("fill", "lightblue")
   .classed("stateCircle", true)
-  
-  // console.log(circlesGroup);
+  console.log(circlesGroup);
 
   var circlesText= chartGroup.selectAll("text")
   .data(censusData)
@@ -211,6 +210,7 @@ d3.csv("assets/data/data.csv").then(function(censusData, err) {
   .attr("dx", d => xLinearScale(d[chosenXAxis]))
   .attr("dy", d => yLinearScale(d[chosenYAxis])+5)
   .classed("stateText", true)
+  console.log(circlesText);
         
   // Create group for three x-axis labels
   var xlabelsGroup = chartGroup.append("g")
