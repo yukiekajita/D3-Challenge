@@ -27,7 +27,7 @@
 ---
 * I incorporate d3-tip to reveal a specific element's data when the user hovers their cursor over the element. I added tooltips to all circles and displayed each tooltip with the data that the user has selected.
 
-
+![Tooltip_Image](Readme_Images/Tooltip_Image.png)
 
 ---
 ** I also caluculated correlation values for each pair of variables using excel file and wrote a quick conclusion at the bottom of the graph.
