@@ -24,7 +24,7 @@ var svg = d3
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-// Initial Params
+// Initial Parameters
 var chosenXAxis = "poverty";
 var chosenYAxis = "healthcare";
 
@@ -59,7 +59,7 @@ function yScale(censusData, chosenYAxis) {
     return yLinearScale;
   }
   
-  // function used for updating xAxis var upon click on axis label
+  // function used for updating yAxis var upon click on axis label
   function renderYAxes(newYScale, yAxis) {
     var leftAxis = d3.axisLeft(newYScale);
     yAxis.transition()
@@ -155,7 +155,7 @@ function updateToolTip(circlesGroup, chosenXAxis, chosenYAxis) {
 
 // Retrieve data from the CSV file and execute everything below
 d3.csv("assets/data/data.csv").then(function(censusData, err) {
-  //if (err) throw err;
+  if (err) throw err;
   // console.log(censusData);
   // parse data
   censusData.forEach(function(data) {
@@ -165,8 +165,8 @@ d3.csv("assets/data/data.csv").then(function(censusData, err) {
     data.smokes= +data.smokes;
     data.healthcare = +data.healthcare;
     data.obesity = +data.obesity;
-    data.abbr = data.abbr;
-    console.log(data.abbr);
+    // data.abbr = data.abbr;
+    // console.log(data.abbr);
   });
 
   // xLinearScale function above csv import
@@ -199,18 +199,18 @@ d3.csv("assets/data/data.csv").then(function(censusData, err) {
   .attr("cy", d => yLinearScale(d[chosenYAxis]))
   .attr("r", 13)
   .classed("stateCircle", true)
-  console.log(circlesGroup);
+  // console.log(circlesGroup);
 
-  var circlesText= chartGroup.selectAll("text")
+  // append state abbreviations in the circles using selectALL("null") function
+  var circlesText= chartGroup.selectAll("null")
   .data(censusData)
   .enter()
   .append("text")
-  .text(d => d.abbr)
-  .style("font", "12px sans-serif")
   .attr("dx", d => xLinearScale(d[chosenXAxis]))
   .attr("dy", d => yLinearScale(d[chosenYAxis])+5)
+  .text(d => d.abbr)
+  .attr("font-size", "12px")
   .classed("stateText", true)
-  console.log(circlesText);
         
   // Create group for three x-axis labels
   var xlabelsGroup = chartGroup.append("g")
@@ -237,7 +237,7 @@ d3.csv("assets/data/data.csv").then(function(censusData, err) {
     .classed("inactive", true)
     .text("Household Income (Median)");
 
-  // Create group for three x-axis labels
+  // Create group for three y-axis labels
   var ylabelsGroup = chartGroup.append("g")
 
   var healthcareLabel = ylabelsGroup.append("text")
