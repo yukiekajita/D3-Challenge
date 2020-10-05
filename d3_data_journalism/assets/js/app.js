@@ -221,21 +221,21 @@ d3.csv("assets/data/data.csv").then(function(censusData, err) {
     .attr("y", 20)
     .attr("value", "poverty") // value to grab for event listener
     .classed("active", true)
-    .text("In poverty (%)");
+    .text("Poverty Rate (%)");
 
   var ageLabel = xlabelsGroup.append("text")
     .attr("x", 0)
     .attr("y", 40)
     .attr("value", "age") // value to grab for event listener
     .classed("inactive", true)
-    .text("Age (Median)");
+    .text("Median Age");
 
   var incomeLabel = xlabelsGroup.append("text")
     .attr("x", 0)
     .attr("y", 60)
     .attr("value", "income") // value to grab for event listener
     .classed("inactive", true)
-    .text("Household Income (Median)");
+    .text("Median Household Income (US$)");
 
   // Create group for three y-axis labels
   var ylabelsGroup = chartGroup.append("g")
@@ -254,7 +254,7 @@ d3.csv("assets/data/data.csv").then(function(censusData, err) {
     .attr("x", 0 - (height / 2))
     .attr("value", "obesity") // value to grab for event listener
     .classed("inactive", true)
-    .text("Obese (%)");
+    .text("Obesity Rate (%)");
 
   var smokesLabel = ylabelsGroup.append("text")
     .attr("transform", "rotate(-90)")
@@ -262,7 +262,7 @@ d3.csv("assets/data/data.csv").then(function(censusData, err) {
     .attr("x", 0 - (height / 2))
     .attr("value", "smokes") // value to grab for event listener
     .classed("inactive", true)
-    .text("Smokes (%)");
+    .text("Smoking Rate (%)");
 
   // updateToolTip function above csv import
   var circlesGroup = updateToolTip(circlesGroup, chosenXAxis, chosenYAxis);
