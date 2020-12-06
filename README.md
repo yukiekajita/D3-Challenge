@@ -5,7 +5,7 @@
 ** Opening website page
 
 
-![Website_Image](Readme_Images/Website_Image.png)
+![Website_Image](Readme_Images/website.png)
 
 
 
@@ -16,7 +16,7 @@
 ** Animated website page with gif
 
 
-![Webscreen_gif](Readme_Images/Webscreen.gif)
+![Webscreen_gif](Readme_Images/Census.gif)
 
 
 
@@ -27,7 +27,7 @@
 ---
 * I incorporated d3-tip to reveal a specific element's data when users hovere their cursor over the element. I added tooltips to all circles and displayed each tooltip with the data that the user had selected.
 
-![Tooltip_Image](Readme_Images/Tooltip_Image.png)
+![Tooltip_Image](Readme_Images/tooltip.png)
 
 ---
 ** I also calculated correlation values for each pair of variables using Excel, and wrote a quick conclusion at the bottom of the graph.
