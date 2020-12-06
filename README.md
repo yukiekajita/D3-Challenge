@@ -5,7 +5,7 @@
 ** Opening website page
 
 
-![Website_Image](Readme_Images/website.png)
+![Website_Image](Readme_Images/main.png)
 
 
 
